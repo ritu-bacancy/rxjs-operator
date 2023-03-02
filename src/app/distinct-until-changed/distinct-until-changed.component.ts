@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
@@ -8,18 +8,13 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
   styleUrls: ['./distinct-until-changed.component.css'],
 })
 export class DistinctUntilChangedComponent {
-  form!: FormGroup;
+  public nameControl: FormControl = new FormControl('');
 
-  constructor(private fb: FormBuilder) {}
+  constructor() {}
 
   ngOnInit() {
-    this.form = this.fb.group({
-      name: [''],
-    });
-
-    this.form
-      .get('name')
-      ?.valueChanges.pipe(debounceTime(1000), distinctUntilChanged())
+    this.nameControl.valueChanges
+      .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe((data) => {
         console.log('data...', data);
       });

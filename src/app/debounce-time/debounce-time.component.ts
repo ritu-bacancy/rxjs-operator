@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 
 @Component({
@@ -8,20 +8,13 @@ import { debounceTime } from 'rxjs';
   styleUrls: ['./debounce-time.component.css'],
 })
 export class DebounceTimeComponent {
-  form!: FormGroup;
+  public nameControl: FormControl = new FormControl('');
 
-  constructor(private fb: FormBuilder) {}
+  constructor() {}
 
   ngOnInit() {
-    this.form = this.fb.group({
-      name: [''],
+    this.nameControl.valueChanges.pipe(debounceTime(1000)).subscribe((data) => {
+      console.log('data...', data);
     });
-
-    this.form
-      .get('name')
-      ?.valueChanges.pipe(debounceTime(1000))
-      .subscribe((data) => {
-        console.log('data...', data);
-      });
   }
 }

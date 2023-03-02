@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { takeWhile } from 'rxjs';
 
 @Component({
@@ -8,27 +8,19 @@ import { takeWhile } from 'rxjs';
   styleUrls: ['./take-while.component.css'],
 })
 export class TakeWhileComponent {
-  form!: FormGroup;
+  public nameControl: FormControl = new FormControl('');
 
-  constructor(private fb: FormBuilder) {}
+  constructor() {}
 
   ngOnInit() {
-    this.form = this.fb.group({
-      name: [''],
-    });
-
-    this.form
-      .get('name')
-      ?.valueChanges.pipe(
-        takeWhile((value: string) => this.checkCondition(value))
-      )
+    this.nameControl.valueChanges
+      .pipe(takeWhile((value: string) => this.checkCondition(value)))
       .subscribe((data) => {
         console.log('data...', data);
       });
   }
 
   checkCondition(val: string) {
-    console.log('val.length..', val.length);
     return val.length < 5 ? true : false;
   }
 }

@@ -1,15 +1,44 @@
-<div class="container-fluid d-flex">
-  <button class="btn btn-primary m-2" (click)="goTo('debounceTime')">
-    DebounceTime
-  </button>
+<div class="container-fluid">
+  <div class="d-flex">
+    <button class="btn btn-primary m-2" (click)="goTo('debounceTime')">
+      DebounceTime
+    </button>
 
-  <button class="btn btn-primary m-2" (click)="goTo('distinct-until-changed')">
-    distinct-until-changed
-  </button>
+    <button
+      class="btn btn-primary m-2"
+      (click)="goTo('distinct-until-changed')"
+    >
+      distinct-until-changed
+    </button>
 
-  <button class="btn btn-primary m-2" (click)="goTo('takeWhile')">
-    takeWhile
-  </button>
+    <button class="btn btn-primary m-2" (click)="goTo('takeWhile')">
+      takeWhile
+    </button>
+
+    <button class="btn btn-primary m-2" (click)="goTo('forkJoin')">
+      forkJoin
+    </button>
+
+    <button class="btn btn-primary m-2" (click)="goTo('switchMap')">
+      switchMap
+    </button>
+
+    <button class="btn btn-primary m-2" (click)="goTo('mergeMap')">
+      mergeMap
+    </button>
+
+    <button class="btn btn-primary m-2" (click)="goTo('take')">take</button>
+
+    <button class="btn btn-primary m-2" (click)="goTo('takeUntil')">
+      takeUntil
+    </button>
+
+    <button class="btn btn-primary m-2" (click)="goTo('combineLatest')">
+      combineLatest
+    </button>
+  </div>
+
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>
 </div>
-
-<router-outlet></router-outlet>
