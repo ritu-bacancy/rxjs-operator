@@ -11,6 +11,8 @@ import { ForkJoinComponent } from './fork-join/fork-join.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SwitchMapComponent } from './switch-map/switch-map.component';
 import { TakeComponent } from './take/take.component';
+import TakeUntilComponent from './take-until/take-until.component';
+import { MergeMapComponent } from './merge-map/merge-map.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { TakeComponent } from './take/take.component';
     ForkJoinComponent,
     SwitchMapComponent,
     TakeComponent,
+    TakeUntilComponent,
+    MergeMapComponent,
   ],
   imports: [
     BrowserModule,
